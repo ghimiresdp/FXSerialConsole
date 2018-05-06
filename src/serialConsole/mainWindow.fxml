@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="650.0" stylesheets="@res/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="serialConsole.Controller">
+    <center>
+          <BorderPane prefHeight="200.0" prefWidth="200.0">
+              <left>
+                  <ScrollPane pannable="true" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+                      <VBox maxWidth="275.0" minWidth="275.0" prefHeight="525.0" prefWidth="283.0" spacing="15.0">
+                          <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                          </padding>
+                          <Label text="Serial Port:" textFill="WHITE">
+                              <font>
+                                  <Font name="System Bold" size="14.0" />
+                              </font>
+                          </Label>
+                          <HBox alignment="CENTER" spacing="5.0">
+                              <ComboBox fx:id="portsComboBox" prefHeight="40.0" prefWidth="204.0" promptText="Select Serial Port to connect" style="-fx-background-color: #22CCFF;" />
+                              <Button fx:id="refreshPortsBtn" mnemonicParsing="false" onAction="#refreshPorts" prefHeight="40.0" prefWidth="62.0" text="Refresh" />
+                          </HBox>
+                  <ComboBox fx:id="baudRateComboBox" onAction="#setBaudRate" prefHeight="40.0" prefWidth="204.0" promptText="Baud Rate" style="-fx-background-color: #22CCFF;" />
+                          <HBox spacing="15.0">
+                              <padding>
+                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                              </padding>
+                              <Button fx:id="connectBtn" disable="true" mnemonicParsing="false" onAction="#connectPort" prefHeight="40.0" prefWidth="119.0" text="Connect" />
+                              <Button fx:id="disconnectBtn" disable="true" mnemonicParsing="false" onAction="#disconnectPort" prefHeight="40.0" prefWidth="119.0" text="Disconnect" />
+                          </HBox>
+                          <Button fx:id="clearConsoleBtn" mnemonicParsing="false" onAction="#clearLog" prefHeight="40.0" prefWidth="130.0" text="Clear the Console" />
+                          <Separator prefWidth="200.0" />
+                          <Label text="Data Format" textFill="WHITE">
+                              <font>
+                                  <Font name="System Bold" size="18.0" />
+                              </font>
+                          </Label>
+                          <HBox>
+                              <RadioButton fx:id="asciiRadioBtn" mnemonicParsing="false" prefWidth="80.0" selected="true" text="ASCII">
+                                  <toggleGroup>
+                                      <ToggleGroup fx:id="group1" />
+                                  </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="hexRadioBtn" mnemonicParsing="false" prefWidth="100.0" text="HEX" toggleGroup="$group1" />
+                              <RadioButton fx:id="binaryRadioBtn" mnemonicParsing="false" text="Binary" toggleGroup="$group1" />
+                          </HBox>
+                          <Separator prefWidth="200.0" />
+                          <Label text="Send Options" textFill="WHITE">
+                              <font>
+                                  <Font name="System Bold" size="18.0" />
+                              </font>
+                          </Label>
+                          <HBox>
+                              <CheckBox fx:id="CRCheckBox" mnemonicParsing="false" prefHeight="21.0" prefWidth="100.0" text="CR" />
+                              <CheckBox fx:id="LFCheckBox" mnemonicParsing="false" text="LF" />
+                          </HBox>
+                          <CheckBox fx:id="echoCheckBox" mnemonicParsing="false" selected="true" text="Echo to own terminal" />
+                  <Separator prefWidth="200.0" />
+                  <Label text="Receive Options" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="spaceCheckBox" mnemonicParsing="false" prefHeight="21.0" prefWidth="258.0" text="Separate HEX Codes with Space" />
+                      </VBox>
+                  </ScrollPane>
+              </left>
+              <center>
+                  <GridPane BorderPane.alignment="CENTER">
+                      <columnConstraints>
+                          <ColumnConstraints />
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="350.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                      <TextArea fx:id="logConsole" editable="false" text="[FX Serial Console]&#10;&#10;" wrapText="true" GridPane.columnIndex="1" />
+                      <GridPane hgap="5.0" vgap="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                          <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                          </GridPane.margin>
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                          <TextField fx:id="dataTextField" disable="true" onAction="#sendSerialData" promptText="Enter text to send" />
+                          <Button fx:id="sendBtn" disable="true" mnemonicParsing="false" onAction="#sendSerialData" prefWidth="100.0" text="Send" GridPane.columnIndex="1" />
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </padding>
+                      </GridPane>
+                  </GridPane>
+              </center>
+          </BorderPane>
+    </center>
+</BorderPane>

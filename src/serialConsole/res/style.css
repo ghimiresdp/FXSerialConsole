@@ -1,0 +1,135 @@
+.root{
+	-fx-background-color:#0088AA;
+}
+
+.ScrollPane{
+	-fx-background-color:#0088AA;
+}
+
+/*___________________________________________________________________*/
+.text-field{
+	-fx-background-color:#DDEEFF;
+	-fx-max-height:40;
+	-fx-min-height:40;
+	-fx-background-radius: 5em;
+	-fx-font-size:16;
+}
+
+/*___________________________________________________________________*/
+.button{
+	-fx-background-color:#004455;
+	-fx-max-height:40;
+	-fx-min-height:40;
+	-fx-background-radius: 0.5em;
+	-fx-text-fill:#FFFFFF;
+	-fx-font-weight:Bold;
+}
+
+.button:hover{
+	-fx-background-color:#0066AA;
+}
+.button:pressed{
+	-fx-background-color:#003388;
+}
+
+/*___________________________________________________________________*/
+.tab-pane
+{
+    -fx-tab-min-width:150;
+    -fx-tab-min-height:40;
+}
+
+.tab-pane .tab
+{
+    -fx-background-color: #007799;
+
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: #004455;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #96b946;
+}
+
+/*___________________________________________________________________*/
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+/*___________________________________________________________________*/
+.titled-pane{
+    -fx-font-size:14;
+    -fx-font-weight:bold;
+    -fx-text-fill:white;
+}
+.titled-pane > .title
+{
+    -fx-background-color: #006688;
+}
+
+    .titled-pane:focused > .title
+{
+    -fx-background-color: #005577;}
+    .titled-pane:focused > .title > .arrow-button .arrow
+{
+    -fx-background-color: #AAAAFF;
+}
+    .titled-pane > .title > .arrow-button .arrow
+{
+    -fx-background-color: white;
+}
+
+/*___________________________________________________________________*/
+.check-box{
+    -fx-text-fill:white;
+    -fx-font-size:14;
+}
+.check-box .box {
+    -fx-background-color: transparent;
+    -fx-border-color:yellow;
+    -fx-border-radius:6px;
+
+}
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
+/*___________________________________________________________________*/
+.radio-button{
+    -fx-text-fill:white;
+    -fx-font-size:14;
+}
+
+.radio-button .radio{
+    -fx-background-color:transparent;
+    -fx-border-width:1px;
+    -fx-border-radius: 5em;
+    -fx-border-color: yellow;
+}
+
+.radio-button .dot{
+    -fx-background-color:transparent;
+}
+.radio-button:selected .dot{
+    -fx-background-color:yellow;
+}
+/*___________________________________________________________________*/
+.text-area{
+    -fx-text-fill:#00FF00;
+    -fx-font-family:consolas;
+    -fx-font-size:16;
+}
+.text-area .content{
+    -fx-background-color: black;
+}
+/*___________________________________________________________________*/
